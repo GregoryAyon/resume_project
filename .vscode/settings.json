@@ -1,0 +1,5 @@
+{
+  "python.formatting.provider": "none",
+  "css.validate": false,
+  "tailwindCSS.emmetCompletions": true,
+}

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-main{
+    background-color: #131415;
+}
+
+.defulte-text-color{
+    color: #fff;
+}
+
+.tech-button{
+    @apply shadow-lg border border-gray-500 rounded-md inline py-2 px-3 text-gray-500 font-semibold;
+}

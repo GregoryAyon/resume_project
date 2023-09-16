@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Ayon {% endblock title %}
+
+{% block main %}
+    <section class="my-14 sm:flex gap-6 sm:justify-center sm:items-start p-2 flex-row">
+        <img class="w-40 h-40 rounded-full object-cover aspect-square mx-auto sm:mx-0" src="{% if info.Image %}{{ info.Image.url }}{% else %}{% static 'images/profile.gif' %}{% endif %}" alt="profile-image">
+        <div class="text-center ml-4 sm:text-left">
+            <h2 class="defulte-text-color text-5xl font-bold mt-4 sm:mt-0">{{ info.name }}</h2>
+            <p class="text-gray-400 text-lg mt-6">
+                {{ info.details|safe }}
+            </p>
+            
+            <div class="w-full flex justify-center md:justify-start items-center mt-6">
+                <img src="{% static 'images/emoji/hand.gif' %}" class="w-6" alt="hand-emoji">
+                <p class="text-gray-400 text-lg pl-2">{{ info.email }}</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="w-full flex flex-wrap justify-center text-center">
+        <a class="text-gray-400 font-semibold text-lg hover:text-sky-500" target="_blank" href="{% if info.link_git %}{{ info.link_git }}{% else %}#{% endif %}">🔗 Github</a>
+        <a class="text-gray-400 font-semibold text-lg hover:text-sky-500 ml-3" target="_blank" href="{% if info.link_li %}{{ info.link_li }}{% else %}#{% endif %}">🔗 Linkedin</a>
+        <a class="text-gray-400 font-semibold text-lg hover:text-sky-500 ml-3" target="_blank" href="{% if info.link_fb %}{{ info.link_fb }}{% else %}#{% endif %}">🔗 Facebook</a>
+        <a class="text-gray-400 font-semibold text-lg hover:text-sky-500 ml-3" target="_blank" href="{% if info.link_scholar %}{{ info.link_scholar }}{% else %}#{% endif %}">🔗 Scholar</a>
+        <a class="text-gray-400 font-semibold text-lg hover:text-sky-500 ml-3" target="_blank" href="{% if info.resume %}{{ info.resume.url }}{% else %}{% static '/files/resume.pdf' %}{% endif %}">🔗 Download-Resume</a>
+    </section>
+
+    <section class="my-14">
+        <h2 class="defulte-text-color text-2xl font-bold">Skills & Qualifications</h2>
+        {% if skills %}
+        <ul class="my-4 space-y-1 mx-6 text-gray-400 list-inside text-lg">
+            {% for list in skills %}
+            <li>✔️ {{ list.field }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+
+    <section class="my-14">
+        <h2 class="defulte-text-color text-2xl font-bold">Tech Stack</h2>
+        {% if stacks %}
+        <div class="my-6 flex flex-wrap gap-4">
+            {% for stack in stacks %}
+           <div class="tech-button">
+            {{ stack.field }}
+           </div>
+           {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+
+    <section class="my-14">
+        <h2 class="defulte-text-color text-2xl font-bold">Educations</h2>
+        {% if edu %}
+        <ul class="my-4 space-y-1 mx-6 text-gray-500 list-inside text-lg">
+            {% for e in edu %}
+            <li>🎓 {{ e.field }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+
+    <section class="my-14">
+        <h2 class="defulte-text-color text-2xl font-bold mb-4">Work History</h2>
+        <div class="border-t border-gray-800 pb-6"> </div>
+        {% if works %}
+        {% for work in works %}
+        <div class="border-l border-gray-800 pl-6 mb-8">
+            <h3 class="defulte-text-color text-xl font-semibold mb-2">🚧 {{ work.designation }} | <a class="hover:text-yellow-400" target="_blank" href="{% if work.link %}{{ work.link }}{% else %}#{% endif %}">{{ work.company }}</a></h3>
+            <span class="text-gray-500 text-lg font-medium ">{{ work.job_start_date }} - {% if work.job_end_date %}{{work.job_end_date}}{% else %}Present{% endif %}</span>
+            <div class="text-gray-500 list-inside text-lg mt-3 mb-3">{{ work.details|safe }}</div>
+            
+        </div>
+        {% endfor %}
+        {% endif %}
+    </section>
+
+    <section class="my-14">
+        <h2 class="defulte-text-color text-2xl font-bold mb-4">Projects & Accomplishments</h2>
+        {% if projects %}
+        <ul class="my-4 space-y-1 text-gray-500 list-inside text-lg font-medium">
+            {% for pro in projects %}
+            <li class="border-t border-gray-800 p-3"><a class="hover:text-yellow-400" href="{% if pro.link_git %}{{ pro.link_git }}{% else %}#{% endif %}" target="_blank">🏆 {{ pro.title }}</a> | <a class="border border-gray-500 rounded-md py-1 px-2 hover:text-yellow-400 hover:border-yellow-400" href="{% if pro.link_git %}{{ pro.link_git }}{% else %}#{% endif %}" target="_blank">Github</a> {% if pro.link_live %}| <a class="border border-gray-500 rounded-md py-1 px-2 hover:text-yellow-400 hover:border-yellow-400" target="_blank" href="{{ pro.link_live }}">Live</a>{% endif %}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+
+
+    <section class="my-14">
+        <h2 class="defulte-text-color text-2xl font-bold mb-4">Publication & Awards</h2>
+        {% if publications %}
+        <ul class="my-4 space-y-1 text-gray-500 list-inside text-lg font-medium">
+            {% for p in publications %}
+            <li class="border-t border-gray-800 p-3"><a class="hover:text-yellow-400" href="{{ p.link }}" target="_blank">🏆 {{ p.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+{% endblock main %}
+
+  
+    
+
