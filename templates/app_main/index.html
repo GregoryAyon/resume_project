@@ -70,7 +70,7 @@
         <div class="border-l border-gray-800 pl-6 mb-8">
             <h3 class="defulte-text-color text-xl font-semibold mb-2">🚧 {{ work.designation }} | <a class="hover:text-yellow-400" target="_blank" href="{% if work.link %}{{ work.link }}{% else %}#{% endif %}">{{ work.company }}</a></h3>
             <span class="text-gray-500 text-lg font-medium ">{{ work.job_start_date }} - {% if work.job_end_date %}{{work.job_end_date}}{% else %}Present{% endif %}</span>
-            <div class="text-gray-500 list-inside text-lg mt-3 mb-3">{{ work.details|safe }}</div>
+            <div class="mt-3 mb-3 prose prose-gray max-w-full">{{ work.details|safe }}</div>
             
         </div>
         {% endfor %}
@@ -82,7 +82,7 @@
         {% if projects %}
         <ul class="my-4 space-y-1 text-gray-500 list-inside text-lg font-medium">
             {% for pro in projects %}
-            <li class="border-t border-gray-800 p-3"><a class="hover:text-yellow-400" href="{% if pro.link_git %}{{ pro.link_git }}{% else %}#{% endif %}" target="_blank">🏆 {{ pro.title }}</a> | <a class="border border-gray-500 rounded-md py-1 px-2 hover:text-yellow-400 hover:border-yellow-400" href="{% if pro.link_git %}{{ pro.link_git }}{% else %}#{% endif %}" target="_blank">Github</a> {% if pro.link_live %}| <a class="border border-gray-500 rounded-md py-1 px-2 hover:text-yellow-400 hover:border-yellow-400" target="_blank" href="{{ pro.link_live }}">Live</a>{% endif %}</li>
+            <li class="flex flex-wrap items-center gap-2 border-t border-gray-800 p-3"><a class="hover:text-yellow-400" href="{% if pro.link_git %}{{ pro.link_git }}{% else %}#{% endif %}" target="_blank">🏆 {{ pro.title }}</a> | <a class="border border-gray-500 rounded-md py-1 px-2 hover:text-yellow-400 hover:border-yellow-400" href="{% if pro.link_git %}{{ pro.link_git }}{% else %}#{% endif %}" target="_blank">Github</a> {% if pro.link_live %}| <a class="border border-gray-500 rounded-md py-1 px-2 hover:text-yellow-400 hover:border-yellow-400" target="_blank" href="{{ pro.link_live }}">Live</a>{% endif %}</li>
             {% endfor %}
         </ul>
         {% endif %}

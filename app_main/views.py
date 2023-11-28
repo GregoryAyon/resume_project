@@ -11,7 +11,7 @@ def index_view(request):
         'stacks': TechStackModel.objects.all().order_by('id'),
         'edu': EducationsModel.objects.all().order_by('id'),
         'publications': PublicationModel.objects.all().order_by('id'),
-        'projects': ProjectsModel.objects.all().order_by('id'),
+        'projects': ProjectsModel.objects.all().order_by('-id'),
         'works': WorksModel.objects.all().order_by('id'),
     }
 
